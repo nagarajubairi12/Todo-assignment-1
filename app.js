@@ -145,15 +145,10 @@ app.get("/todos/", async (request, response) => {
         todo LIKE '%${search_q}%';`;
   }
   todoArray = await db.all(getTodosQuery);
-
-  if (todoArray !== null) {
     response.send(
       todoArray.map((eachTodo) => convertDbObjectToResponseObject(eachTodo))
     );
-  } else {
-    response.status(400);
-    response.send("User Already exists");
-  }
+  
 });
 
 app.get("/todos/:todoId/", async (request, response) => {
