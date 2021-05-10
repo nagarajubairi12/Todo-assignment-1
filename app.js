@@ -216,7 +216,7 @@ const ifQueryValid = (request, response, next) => {
       break;
 
     case reqQueryElement.date !== undefined:
-      if (getDateFormat(reqQueryElement.date) === "yyyy-MM-dd") {
+      if (getDateFormat(reqQueryElement.date) !== "yyyy-MM-dd") {
         next();
       } else {
         response.status(400);
