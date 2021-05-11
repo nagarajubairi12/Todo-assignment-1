@@ -13,7 +13,11 @@ Write APIs to perform operations on the table `todo`, with the following columns
 | category | TEXT    |
 | priority | TEXT    |
 | status   | TEXT    |
+<<<<<<< HEAD
 | due_date | DATE    |
+=======
+|          | DATE    |
+>>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 
 <MultiLineNote>
   
