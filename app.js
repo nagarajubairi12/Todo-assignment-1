@@ -3,11 +3,8 @@ const path = require("path");
 
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
-<<<<<<< HEAD
+
 const addDate = require("date-fns");
-const format = require("date-fns");
-=======
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 
 const app = express();
 app.use(express.json());
@@ -33,7 +30,6 @@ const initializeDBAndServer = async () => {
 
 initializeDBAndServer();
 
-<<<<<<< HEAD
 const formatMonth = (input) => {
   if (input > 9) {
     return `${input}`;
@@ -50,8 +46,6 @@ const formatDate = (date) => {
   }
 };
 
-=======
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 const convertDbObjectToResponseObject = (dbObject) => {
   return {
     id: dbObject.id,
@@ -92,7 +86,6 @@ const categoryAndPriorityProperties = (requestQuery) => {
     requestQuery.category !== undefined && requestQuery.priority !== undefined
   );
 };
-<<<<<<< HEAD
 
 const getStatus = (statusInput) => {
   const statusArray = ["TO DO", "IN PROGRESS", "DONE"];
@@ -239,9 +232,6 @@ const ifQueryValid = (request, response, next) => {
 //API 1
 
 app.get("/todos/", ifQueryValid, async (request, response) => {
-=======
-app.get("/todos/", async (request, response) => {
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
   const { search_q = "", priority, status, category } = request.query;
   let getTodosQuery = "";
   let todoArray = null;
@@ -318,7 +308,6 @@ app.get("/todos/", async (request, response) => {
         todo LIKE '%${search_q}%';`;
   }
   todoArray = await db.all(getTodosQuery);
-<<<<<<< HEAD
   console.log(todoArray);
   response.send(
     todoArray.map((eachTodo) => convertDbObjectToResponseObject(eachTodo))
@@ -327,14 +316,6 @@ app.get("/todos/", async (request, response) => {
 
 // API 2
 
-=======
-    response.send(
-      todoArray.map((eachTodo) => convertDbObjectToResponseObject(eachTodo))
-    );
-  
-});
-
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 app.get("/todos/:todoId/", async (request, response) => {
   const { todoId } = request.params;
   const getTodoQuery = `
@@ -343,10 +324,9 @@ app.get("/todos/:todoId/", async (request, response) => {
   response.send(convertDbObjectToResponseObject(todoItem));
 });
 
-<<<<<<< HEAD
 //API 3
 
-app.get("/agenda/", ifQueryValid, async (request, response) => {
+app.get("/agenda/", async (request, response) => {
   const { date } = request.query;
   const dateString = addDate.format(new Date(date), "yyyy-MM-dd");
   const dateFormate = new Date(dateString);
@@ -370,15 +350,6 @@ app.get("/agenda/", ifQueryValid, async (request, response) => {
 app.post("/todos/", async (request, response) => {
   const { id, todo, priority, status, category, dueDate } = request.body;
   console.log(request.body);
-=======
-app.get("/agenda/", async (request, response) => {
-  const { date } = request.query;
-  console.log(date);
-});
-
-app.post("/todos/", async (request, response) => {
-  const { id, todo, priority, status, category, dueDate } = request.body;
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 
   const getTodoQuery = `
     INSERT INTO 
@@ -390,7 +361,6 @@ app.post("/todos/", async (request, response) => {
 
   response.send("Todo Successfully Added");
 });
-<<<<<<< HEAD
 
 // API 5
 
@@ -398,10 +368,6 @@ app.put("/todos/:todoId/", isValidRequest, async (request, response) => {
   const { todoId } = request.params;
   console.log(request.body);
 
-=======
-app.put("/todos/:todoId/", async (request, response) => {
-  const { todoId } = request.params;
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
   let updateColumn = "";
   const requestBody = request.body;
   switch (true) {
@@ -454,16 +420,12 @@ app.put("/todos/:todoId/", async (request, response) => {
   response.send(`${updateColumn} Updated`);
 });
 
-<<<<<<< HEAD
 // API 6
 
-=======
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 app.delete("/todos/:todoId/", async (request, response) => {
   const { todoId } = request.params;
   const getTodoQuery = `
     DELETE FROM todo WHERE id = ${todoId};`;
-<<<<<<< HEAD
   const dbResponse = await db.run(getTodoQuery);
 
   if (dbResponse.changes === 0) {
@@ -474,9 +436,4 @@ app.delete("/todos/:todoId/", async (request, response) => {
   }
 });
 
-=======
-  await db.run(getTodoQuery);
-  response.send("Todo Deleted");
-});
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
 module.exports = app;
