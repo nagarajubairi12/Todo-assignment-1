@@ -1,70 +1,46 @@
-<<<<<<< HEAD
 // API 1
 
-GET http://localhost:3000/todos/?category=WORK&status=DONE
+GET http://localhost:3000/todos/?category=HOME
 
 ###
 
 // API 2
-GET http://localhost:3000/todos/2/
+GET http://localhost:3000/todos/7/
 
 ###
 
 //API 3
-GET http://localhost:3000/agenda/?date=2021-02-88
+GET http://localhost:3000/agenda/?date=2021-02-22
 
 ###
 
 // API 4
 
-=======
-GET http://localhost:3000/todos/?status=DON
-###
-
-GET http://localhost:3000/todos/5/
-###
-GET http://localhost:3000/agenda/?date=2021-02-22
-
-###
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
-POST http://localhost:3000/todos/
+POST  http://localhost:3000/todos/
 Content-Type: application/json
 
 {
-  "id": 6,
+  "id": 7,
   "todo": "Finalize event theme",
   "priority": "LOW",
   "status": "TO DO",
   "category": "HOME",
-  "dueDate": "2021-02-22"
+  "dueDate": "2021-02-24"
 }
-<<<<<<< HEAD
 
 ###
 
-//API 5
+// API 5
 
-PUT http://localhost:3000/todos/1/
+PUT  http://localhost:3000/todos/1/
 Content-Type: application/json
 
 {
-      "priority": "HIGH"
+      "dueDate": "2021-01-23"
     }
 
-
 ###
+
 
 //API 6
-DELETE  http://localhost:3000/todos/49/
-=======
-###
 DELETE http://localhost:3000/todos/6/
-
-###
-PUT http://localhost:3000/todos/6/
-Content-Type: application/json
-
-{
-        "dueDate": "2021-01-20"
-    }
->>>>>>> 0ee982d34f6b4f263fbd5efb154dec6969250b0e
